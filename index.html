@@ -7,23 +7,23 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="app">
         <div class="panel">
-            <div class="button">
-                <a href="#" id="search-city" class="search">Поиск города</a>
-            </div>
+            <button id="search-city" class="search">Поиск города</button>
             <div class="backgr-img">
                 <div class="content center">
                     <div class="img-box">
                         <img src="img/snowflake.svg" class="snowflake" alt="snowflake">
                     </div>
-                    <p class="temperature">1 °C</p>
+                    <div class="temperature-box">
+                        <span class="temperature">1</span>
+                        <span class="temperature-smoll">°C</span>
+                    </div>
                     <p class="precipitation">Cнег</p>
                 </div>
             </div>
@@ -62,11 +62,12 @@
              </div>
         </div>
         <div class="core">
-            <section class="forecast">
+            <div class="container">
+                <section class="forecast">
                 <div class="forecast__heading">
                     <h4 class="forecast__title">Прогноз </h4>
-                    <button class="label-week label forecast__active">на неделю</button>
-                    <button class="label-hourly label">почасовой</button>
+                    <span class="label-week label forecast__active">на неделю</span>
+                    <span class="label-hourly label">почасовой</span>
                    
                 </div>
                     
@@ -203,6 +204,48 @@
                 </div>
                
             </section>
+            <section class="detailed">
+               <h3 class="detailed__title">Подробно на сегодня</h3> 
+               <div class="detailed__box">
+                <article class="card-details speed">
+                    <h5 class="card-details__head card__text">Скорость ветра</h5>
+                    <div class="card-details__box">
+                            <span class="card-details__text-big card__text">7 </span>
+                            <span class="card-details__text-smoll card__text">м/с</span>
+                    </div>
+                        <div class="card-details__direction">
+                            <svg width="38" height="38" viewBox="0 0 38 38" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="19" cy="19" r="19" fill="#48484A"/>
+                                <path d="M18.1951 31.0029L10.0872 10.8978C9.76221 10.092 10.5487 9.28365 11.3631 9.58643L31.9073 17.2246C32.7267 17.5293 32.7906 18.6717 32.0237 19.0912C26.1915 22.2822 23.1612 25.3608 20.0501 31.0907C19.6388 31.8482 18.5175 31.8023 18.1951 31.0029Z" fill="#E6E6E6"/>
+                                </svg>
+                            <span class="card-details__wind card__text">СЗ</span>
+                        </div>
+                    </article>
+                <article class="card-details other" >
+                    <h5 class="card-details__head card__text">Видимость</h5>
+                    <div class="card-details__box">
+                            <span class="card-details__text-big card__text">6.2 </span>
+                            <span class="card-details__text-smoll card__text">км</span>
+                    </div>
+                </article>
+                <article class="card-details other" >
+                    <h5 class="card-details__head card__text">Влажность</h5>
+                    <div class="card-details__box">
+                         <span class="card-details__text-big card__text">84 </span>
+                        <span class="card-details__text-smoll card__text">%</span>
+                    </div>
+                </article>
+                <article class="card-details other" >
+                    <h5 class="card-details__head card__text">Давление</h5>
+                    <div class="card-details__box">
+                        <span class="card-details__text-big card__text">742</span>
+                        <span class="card-details__text-extra-smoll card__text">мм рт. ст.</span>
+                    </div>
+                </article>
+                </div>
+            </section>
+            </div>
+            
         </div>
     </div>
            
