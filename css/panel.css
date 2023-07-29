@@ -1,0 +1,120 @@
+.panel {
+    width: 460px;
+    padding-top: 42px;
+    padding-bottom: 35px;
+    position: relative;
+    opacity: 1.05;
+    background: url(../img/back.png) no-repeat;
+    background-blend-mode: difference;
+    background-color: var(--panel-light);
+    background-position: left 110px;
+}
+
+.search {
+    color: var(--gray, #48484A);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal; 
+    border-radius: 10px;
+    border: 2px solid var(--hint);
+    background: var(--panel-light);
+    width: 180px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 24px;
+    margin-left: 41px;
+}
+.top {
+    display: flex;
+    gap: 131px;
+    align-items: center;
+}
+.switch-box {
+    margin-top: -18px;
+}
+
+.botom {
+    background-color: var(--background-light);
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.img-box {
+    width: 200px;
+    height: 200px;
+    
+}
+.snowflake {
+    height: auto;
+    width: 100%;
+}
+.temperature-box {
+    margin-bottom: 17px;
+}
+
+.temperature {
+    color: var(--gray);
+    text-align: center;
+    font-size: 96px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    
+}
+.temperature-smoll {
+    color: var(--gray);
+    font-size: 50px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.precipitation {
+    color: var(--gray);
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; /* 36px */
+    margin-bottom: 17px;
+}
+.sensation {
+    color: var(--hint );
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin-bottom: 78px;
+}
+.date-box {
+    display: flex;
+    gap: 88px;
+    justify-content: center;
+    margin-bottom: 35px;
+}
+.day {
+    color: var(--hint );
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.city-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.city {
+    color: var(--hint);
+    text-align: center;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

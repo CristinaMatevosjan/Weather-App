@@ -3,19 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Боковвая панель</title>
+    <title>Weather App</title>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="app">
-        <div class="wrapper center">
+    
            <div class="panel">
-            <button id="search-city" class="search">Поиск города</button>
+            <div class="top">
+                <button id="search-city" class="search">Поиск города</button>
+            <div class="switch-box">
+                <button class="switch-off"><img src="img/Switch_off.svg" alt="switch off"></button>
+                <button class="switch-on none"><img  src="img/Switch_on.svg" alt="switch on"></button>
+            </div>
+            </div>
             <div class="content">
                     <div class="img-box">
                         <img src="img/snowflake.svg" class="snowflake" alt="snowflake">
@@ -65,8 +71,7 @@
                 </div>
             </div>
             </div> 
-        </div>
-        
+            
         <div class="core">
             <div class="core__box center">
                 <section class="forecast">
@@ -363,6 +368,9 @@
         </div>
     </div>
            
-<script src="js.js" defer></script>
+<script src="scripts/searchCity.js" defer></script>
+<script src="scripts/forecast.js" defer></script>
+<script src="scripts/chooseTheme.js" defer></script>
+
 </body>
 </html>

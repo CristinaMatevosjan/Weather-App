@@ -1,0 +1,11 @@
+.app {
+    display: flex;
+    min-width: 1440px;
+    
+}
+.core {
+    min-width: 980px;
+}
+.core__box {
+    margin: 44px 0;
+}
