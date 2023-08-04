@@ -1,10 +1,10 @@
-.panel {
+.sideBar  {
     width: 460px;
     padding-top: 42px;
     padding-bottom: 35px;
     position: relative;
     opacity: 1.05;
-    background: url(../img/back.png) no-repeat;
+    background: url(../../img/back.png) no-repeat;
     background-blend-mode: difference;
     background-color: var(--panel-light);
     background-position: left 110px;
@@ -32,7 +32,7 @@
     gap: 131px;
     align-items: center;
 }
-.switch-box {
+.switchBox {
     margin-top: -18px;
 }
 
@@ -44,7 +44,7 @@
     flex-direction: column;
     align-items: center;
 }
-.img-box {
+.imgBox {
     width: 200px;
     height: 200px;
     
@@ -53,7 +53,7 @@
     height: auto;
     width: 100%;
 }
-.temperature-box {
+.temperatureBox {
     margin-bottom: 17px;
 }
 
@@ -66,7 +66,7 @@
     line-height: normal;
     
 }
-.temperature-smoll {
+.temperatureSmoll {
     color: var(--gray);
     font-size: 50px;
     font-style: normal;
@@ -90,7 +90,7 @@
     line-height: normal;
     margin-bottom: 78px;
 }
-.date-box {
+.dateBox {
     display: flex;
     gap: 88px;
     justify-content: center;
@@ -104,7 +104,7 @@
     font-weight: 400;
     line-height: normal;
 }
-.city-box {
+.cityBox {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -117,4 +117,48 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+}
+.none {
+    display: none;
+}
+
+@media ( min-width: 834px) and (max-width:1439px) {
+    .sideBar{
+        max-width: 329px;
+        /* height: 100vh; */
+        padding-top: 53px;
+        background-position: 0 307px;
+        background-size: contain;
+    }
+    .imgBox {
+        margin: 46px 0 237px 0;
+    }
+    .search {
+        margin: 0 0 204px 28px;
+    }
+    .top {
+        gap: 36px;
+    }
+    .switchBox {
+        margin-top: -200px;
+    }
+
+}
+
+@media (max-width: 834px) { 
+    .sideBar {
+        width: 100%;
+        background-position: left 67px;
+        background-size: contain;
+        padding-top: 31px;
+    }
+    .search {
+        margin-left: 30px;
+    }
+    .top {
+        gap: 71px;
+    }
+    .switchBox {
+        margin-top: -23px;
+    }
 }

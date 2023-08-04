@@ -1,0 +1,28 @@
+
+.card {
+    border-radius: 8.362px;
+    background: var(--panel-light);
+    box-shadow: 0px 7px 12px 0px rgba(0, 0, 0, 0.05);
+    width: 100px;
+    height: 143px;
+    position: relative;
+}
+
+.text {
+    color: var(--gray);
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.card__hour {
+    position: absolute;
+    top: 16px;
+    left: 30px;
+}
+ .card__temp {
+    position: absolute;
+    top: 111px;
+    left: 35px;
+ }

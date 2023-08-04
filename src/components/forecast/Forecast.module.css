@@ -19,7 +19,7 @@
     line-height: 100%;
     margin-right: 24px;
 }
-.label-week {
+.labelWeek {
     
     margin-right: 16px;
 }
@@ -33,17 +33,16 @@
     
     
 }
-.forecast__active {
+.forecastActive {
     color: var(--gray);
     border-bottom: 3px solid #48484A;
-    width: 109px;
     padding-bottom: 9px;
         
 }
 .hid {
     display: none;
 }
-.hour-hid {
+.hourHid {
     display: none;
 }
 
@@ -53,19 +52,19 @@
     align-items: center;
     position: relative;
 }
-.arrow-left {
+.arrowLeft {
     position: absolute;
     top: 53px;
     left: -56px;
 
 }
-.arrow-right {
+.arrowRight {
     position: absolute;
     top: 53px;
     right: -56px;
 }
 
-.list-cards {
+.listCards {
     display: flex;
     gap: 24px;
     justify-content: center;
@@ -77,61 +76,58 @@
     position: absolute;
     top: 0;
 }
-.card {
-    border-radius: 8.362px;
-    background: var(--panel-light);
-    box-shadow: 0px 7px 12px 0px rgba(0, 0, 0, 0.05);
-    width: 100px;
-    height: 143px;
-    position: relative;
-}
-.card__back {
-    height: 100px;
-    width: 100px;
-    position: absolute;
-    top: 24px;
-    
-}
-.card__day {
-    left: 15px;
-    position: absolute;
-    top: 16px;
-    
-}
-.card__tomorrow {
-    left: 25px;
-    position: absolute;
-    top: 16px;
-}
-.card__temperature {
-    
-    display: flex;
-    gap: 18px;
-    justify-content: center;
-    position: absolute;
-    bottom: 15px;
-    left: 14px;
 
+@media ( min-width: 834px) and (max-width:1439px) {
+    .forecast {
+        margin-bottom: 42px;
+    }
+    .forecast__box {
+        display: flex;
+    }
+    .forecast__heading {
+        margin-left: 0;
+    }
+    .arrowLeft {
+        left: -49px;
+    }
+    .arrowRight {
+        right: -49px;
+    }
 }
-.text {
-    color: var(--gray);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+
+@media (max-width: 834px) {
+    
+    .forecast {
+        align-items: center;
+        margin-bottom: 59px;
+    }
+    
+    .forecast__heading {
+        margin-left: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        align-items: center;
+    }
+    .forecast__box {
+        display: flex;
+        gap: 39px;
+    }
+    .arrowNone {
+        display: none;
+    }
+    .listCards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-row-gap: 30px;
+        grid-column-gap: 55px;
+    }
+    .none {
+        display: none;
+    }
+    .mb {
+        margin-bottom: 600px;
+    }
+    
 }
-.card__min {
-    color: #D3D3D3;
-}
-/* почасовые карточки
- */
- .card__hour {
-    position: absolute;
-    top: 16px;
-    left: 30px;
-}
- .card__temp {
-    position: absolute;
-    top: 111px;
-    left: 35px;
- }
+
