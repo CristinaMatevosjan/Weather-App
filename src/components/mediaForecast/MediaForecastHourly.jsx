@@ -1,60 +1,78 @@
 import ForecastCardHourly from '../forecastCardWeek/ForecastCardWeek';
-import {useMediaQuery} from 'react-responsive'
-import React from 'react';
+import React, {useEffect,useState} from 'react';
+import clon from './../../img/clon.png';
+import thunderstorm from './../../img/thunderstorm.png';
 
 const MediaForecastHourly = (props) => {
+  const [resolution, setResolution] = useState('desktop')
+
     let cardsHourlyDataMobile=[
-        {hour:'15:00', temp:'10°C'},
-        {hour:'16:00', temp:'10°C'},
-        {hour:'17:00', temp:'10°C'},
-        {hour:'18:00', temp:'10°C'},
-        {hour:'19:00', temp:'10°C'},
-        {hour:'20:00', temp:'10°C'},
-        {hour:'21:00', temp:'10°C'},
-        {hour:'22:00', temp:'10°C'},
-        {hour:'23:00', temp:'10°C'},
-        {hour:'00:00', temp:'10°C'},
-        {hour:'01:00', temp:'10°C'},
-        {hour:'02:00', temp:'10°C'},
+        {id:1, hour:'15:00',img: clon, temp:'10°C'},
+        {id:2, hour:'16:00',img: clon, temp:'10°C'},
+        {id:3, hour:'17:00',img: clon, temp:'10°C'},
+        {id:4, hour:'18:00',img: clon, temp:'10°C'},
+        {id:5, hour:'19:00',img: thunderstorm, temp:'10°C'},
+        {id:6, hour:'20:00',img: thunderstorm, temp:'10°C'},
+        {id:7, hour:'21:00',img: clon , temp:'10°C'},
+        {id:8, hour:'22:00',img: clon , temp:'10°C'},
+        {id:9, hour:'23:00',img: thunderstorm , temp:'10°C'},
+        {id:10, hour:'00:00',img:  clon, temp:'10°C'},
+        {id:11, hour:'01:00',img: clon , temp:'10°C'},
+        {id:12, hour:'02:00',img: clon , temp:'10°C'},
         
     ]
     let cardsHourlyDataTablet=[
-        {hour:'15:00', temp:'10°C'},
-        {hour:'16:00', temp:'10°C'},
-        {hour:'17:00', temp:'10°C'},
+        {id:1, hour:'15:00',img: clon, temp:'10°C'},
+        {id:2, hour:'16:00',img: clon, temp:'10°C'},
+        {id:3, hour:'17:00',img: clon, temp:'10°C'},
                
     ]
     let cardsHourlyDataDesktop=[
-        {hour:'15:00', temp:'10°C'},
-        {hour:'16:00', temp:'10°C'},
-        {hour:'17:00', temp:'10°C'},
-        {hour:'18:00', temp:'10°C'},
-        {hour:'19:00', temp:'10°C'},
-        {hour:'20:00', temp:'10°C'},
+        {id:1, hour:'15:00',img: clon, temp:'10°C'},
+        {id:2, hour:'16:00',img: clon, temp:'10°C'},
+        {id:3, hour:'17:00',img: clon, temp:'10°C'},
+        {id:4, hour:'18:00',img: clon, temp:'10°C'},
+        {id:5, hour:'19:00',img: thunderstorm, temp:'10°C'},
+        {id:6, hour:'20:00',img: thunderstorm, temp:'10°C'},
                
     ]
     
     let cardsHourlyElementsMobile=cardsHourlyDataMobile
-    .map(cardHourly => <ForecastCardHourly hour={cardHourly.hour} temp={cardHourly.temp} />);
+    .map(cardHourly => <ForecastCardHourly key={cardHourly.id} hour={cardHourly.hour} img={cardHourly.img} temp={cardHourly.temp} />);
     let cardsHourlyElementsTablet=cardsHourlyDataTablet
-    .map(cardHourly => <ForecastCardHourly hour={cardHourly.hour} temp={cardHourly.temp} />);
+    .map(cardHourly => <ForecastCardHourly key={cardHourly.id} hour={cardHourly.hour} img={cardHourly.img} temp={cardHourly.temp} />);
     let cardsHourlyElementsDesktop=cardsHourlyDataDesktop
-    .map(cardHourly => <ForecastCardHourly hour={cardHourly.hour} temp={cardHourly.temp} />);
+    .map(cardHourly => <ForecastCardHourly key={cardHourly.id} hour={cardHourly.hour} img={cardHourly.img} temp={cardHourly.temp} />);
+    
+    function calculateCards() {
+              const screenWidth = window.innerWidth;
+              if (screenWidth >= 1440) {
+                  setResolution('desktop');
+              } else if (screenWidth >= 834 && screenWidth <= 1439) {
+                  setResolution('tablet');
+              } else {
+                setResolution('mobile');
 
-    const isBigScreen = useMediaQuery({ query: '(min-width:1440)'});
-    const isMobile = useMediaQuery({ query: '( max-width:834)'});
-    const isTablet=useMediaQuery({query: '(min-width:834,max-width:1439)'})
+              }
+            }
 
-    return (
-        <div>
-            {isTablet && cardsHourlyElementsTablet} 
-            {isMobile && cardsHourlyElementsMobile}
-            {isBigScreen && cardsHourlyElementsDesktop}
-        </div>
-    )    
+    useEffect(() => {      
+        calculateCards();
+        window.addEventListener('resize', calculateCards);
+        return () => {
+          window.removeEventListener('resize', calculateCards);
+        };
+      }, []);
+
+      return (
+        <>
+            { resolution === 'desktop' && cardsHourlyElementsDesktop}
+            { resolution === 'tablet' && cardsHourlyElementsTablet}
+            { resolution === 'mobile' && cardsHourlyElementsMobile}
+        </>
+      )
+    
 }
 export default MediaForecastHourly;
-
-
 
 

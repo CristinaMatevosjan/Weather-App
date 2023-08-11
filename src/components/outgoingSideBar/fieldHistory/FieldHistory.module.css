@@ -1,0 +1,49 @@
+
+.wrapperCity {
+    display: flex;
+    gap: 22px;
+    width: 369px;
+    padding: 26px 28px 26px 30px;
+    background: var(--panel-light);
+    border-radius: 10px;
+}
+
+.wrapperCity:hover {
+    background-color: var(--light-gray);
+    transition: all 0.2s;
+
+}
+.wrapperCity:hover .display {
+    display: block;
+    transition: all 0.2s;
+}
+.display {
+    display: none;
+}
+
+.city {
+    color: var(--gray);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 100%; 
+    word-wrap: break-word;
+}
+
+@media ( min-width: 834px) and (max-width:1439px) {
+
+    .wrapperCity {
+        width: 275px;
+        padding: 26px 36px 26px 22px;       
+
+    }
+}
+
+@media (max-width: 834px) {
+    .wrapperCity {
+        width: 298px;
+        padding: 25px 36px 25px 26px;       
+
+    }
+
+}

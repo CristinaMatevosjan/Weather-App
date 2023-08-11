@@ -7,7 +7,12 @@
     height: 143px;
     position: relative;
 }
-
+.card__back {
+    height: 100px;
+    width: 100px;
+    position: absolute;
+    top: 24px;
+}
 .text {
     color: var(--gray);
     font-size: 14px;
