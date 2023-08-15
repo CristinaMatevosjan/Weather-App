@@ -4,7 +4,7 @@ import DetailedCardSpeed from '../detailedCardSpeed/DetailedCardSpeed';
 import DetailedCardOther from '../detailedCardOther/DetailedCardOther';
 
 
-const Detailed = (props) => {
+const Detailed = () => {
     let detailedData=[
         {id:1, head: 'Влажность', textBig: '84', textSmall:'%'},
         {id:2, head: 'Видимость', textBig: '6.2 ', textSmall:'км'},
@@ -13,7 +13,7 @@ const Detailed = (props) => {
     
 
     let detailedDataElements=detailedData
-    .map(data => <DetailedCardOther  head={data.head} textBig={data.textBig} textSmall={data.textSmall}/>);
+    .map(data => <DetailedCardOther key={data.id}  head={data.head} textBig={data.textBig} textSmall={data.textSmall}/>);
 
     return (
        <section className={classes.detailed}>

@@ -1,7 +1,7 @@
 import React from 'react';
 import classes from './DetailedCardSpeed.module.css';
 
-const DetailedCardSpeed = (props) => {
+const DetailedCardSpeed = () => {
     return (
        <li>
             <article className={`${classes.cardDetails} ${classes.speed}`}>

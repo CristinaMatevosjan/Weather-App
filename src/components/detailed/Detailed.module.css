@@ -28,7 +28,7 @@
     }
 }
 
-@media (max-width: 834px) {
+@media (max-width: 833.9px) {
     .detailed {
         display: flex;
         flex-direction: column;

@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState}  from 'react';
+import React, { useState}  from 'react';
 import {BrowserRouter} from 'react-router-dom';
 import OutgoingSideBar from './components/outgoingSideBar/OutgoingSideBar';
 import SideBar from './components/side-bar/SideBar';
@@ -10,86 +10,78 @@ import Context from './components/Context';
 function App() {
   const [isOutgoingSideBarOpen, setIsOutgoingSideBarOpen] = useState(false);
 
-  const [city,setCity]=useState("");
-  const [isStart,setIsStart]=useState(false);
-  const [citySearch,setCitySearch] = useState('Москва');
-  const [noData,setNoData]=useState('');
-  
-  let historyCityes= useMemo(()=> {
-    return ["","","","",""];
-  }, []);
+  const [citySearch, setCitySearch] = useState({
+    citySearch: "Москва",
+    err: "",
+  });
 
-  useEffect(() => {
-    const getCity=async()=>{
-      const query= citySearch;
-      if(isStart) {
-          
-          await fetch(`https://nominatim.openstreetmap.org/search.php?q=${query}&format=json&addressdetails=1&limit=1`,)
-          .then((response) => {
-            return response.json();
-          })
-          .then((data) => {
-            if(!data.length){
-              setNoData('Упс! Город не найден, попробуйте другой');
-              setCity(noData);
-            }else {
-              setCitySearch(data[0].address.city)
-            }
-          })
-          .catch(() => {
-  
-      })
-      
-      createHistoryCityes();
-    }
-    }
-    getCity();  
+  const [searchHistory, setSearchHistory] = useState([]);
+  const [location, setLocation] = useState({ lat: "", lon: "" });
 
-    const createHistoryCityes = (historyCityes) => {
-      while (true) {
-        for (let i = 0; i < historyCityes.length; i++) {
-          historyCityes.splice(i,1,citySearch);
+  const getCity = (e) => {
+    e.preventDefault();
+    const query = e.target.elements.city.value;
+    localStorage.setItem("query", query);
+
+    fetch(
+      `https://nominatim.openstreetmap.org/search.php?q=${query}&format=json&addressdetails=1&limit=1`
+    )
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
         }
-      }
-    }  
- 
-  },[citySearch,isStart,historyCityes,noData])
+      })
+      .then((data) => {
+        console.log(data[0]);
+        const cityData = data[0].address.city;
+        console.log(cityData);
+        setLocation({ lat: data[0].lat, lon: data[0].lon });
+        setCitySearch({ citySearch: cityData });
+        setSearchHistory((prevHistory) => [
+          cityData,
+          ...prevHistory.slice(0, 4),
+        ]);
+        setIsOutgoingSideBarOpen(false);
+        e.target.elements.city.value = "";
+      })
+      .catch(() => {
+        setCitySearch({ err: "Упс! Город не найден, попробуйте другой" });
+        e.target.elements.city.value = "";
+      });
+  };
 
-const handleCityChange = (e) => {
-      setCitySearch(setCity(e.target.value))
+  const handleSearchItemClick = (item) => {
+    console.log(item);
+    setIsOutgoingSideBarOpen(false);
+    citySearch.citySearch = item;
+  };
 
-  }
-const handleSubmit = (e) => {
-      e.preventDefault();
-      setIsStart(true);
-      setCity('');
-              
-  }
-        
-const value= {
-    city,
+  const value = {
+    getCity,
     citySearch,
-    handleCityChange,
-    handleSubmit,
-    historyCityes
-  }
- 
+    searchHistory,
+    handleSearchItemClick,
+    location,
+  };
+
   return (
     <Context.Provider value={value}>
-         <BrowserRouter>
-        <div className='app'>
+      <BrowserRouter>
+        <div className="app">
           <SideBar setOutgoingSideBarStatus={setIsOutgoingSideBarOpen} />
-          <OutgoingSideBar isOpen={isOutgoingSideBarOpen} setOutgoingSideBarStatus={setIsOutgoingSideBarOpen} />
-            <div className='core'>
-                  <div className='core__box center'>
-                      <Forecast/>
-                      <Detailed/>
-                  </div>
-              </div>
+          <OutgoingSideBar
+            isOpen={isOutgoingSideBarOpen}
+            setOutgoingSideBarStatus={setIsOutgoingSideBarOpen}
+          />
+          <div className="core">
+            <div className="core__box center">
+              <Forecast />
+              <Detailed />
+            </div>
+          </div>
         </div>
-    </BrowserRouter> 
+      </BrowserRouter>
     </Context.Provider>
-   
   );
 }
 export default App;

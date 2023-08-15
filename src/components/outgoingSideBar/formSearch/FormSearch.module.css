@@ -40,6 +40,12 @@
     cursor: pointer;
 }
 
+.error {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 600;
+}
+
 @media ( min-width: 834px) and (max-width:1439px) {
 
 .searchField {
@@ -64,7 +70,7 @@
 }
 }
 
-@media (max-width: 834px) {
+@media (max-width: 833.9px) {
     .searchField {
         position: relative;
         display: grid;

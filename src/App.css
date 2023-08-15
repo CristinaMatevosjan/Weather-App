@@ -90,7 +90,7 @@ a {
 }
 
 
-@media (max-width: 834px) {
+@media (max-width: 833.9px) {
   .app {
       min-width: 375px;
       flex-direction: column;

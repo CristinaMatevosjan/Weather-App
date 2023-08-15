@@ -36,7 +36,7 @@
     gap: 21px;
     align-items: center;
 }
-@media (max-width: 834px) {
+@media (max-width: 833.9px) {
     .cardDetails {
         width: 314px;
         height: 162px;
