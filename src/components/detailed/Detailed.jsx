@@ -10,6 +10,14 @@ const Detailed = () => {
         {id:2, head: 'Видимость', textBig: '6.2 ', textSmall:'км'},
         {id:3, head: 'Давление', textBig: '742', textSmall:'мм рт. ст.'},
     ]
+
+    let detailsData=JSON.parse(localStorage.getItem('dataForecast'));
+    console.log(detailsData + ' detailsData');
+    
+
+    // detailedData.forEach(element => {
+    //     element.textBig=detailsData.
+    // });
     
 
     let detailedDataElements=detailedData

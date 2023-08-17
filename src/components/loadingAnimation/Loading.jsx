@@ -3,13 +3,12 @@ import './Loading.css';
 
 const Loading = () => {
     return (
-       <div className='ldsFacebook'> 
+      <div className="lds-ellipsis">
         <div></div>
         <div></div>
         <div></div>
-
-    </div> 
-    )
+      </div>
+    );
     
 }
 

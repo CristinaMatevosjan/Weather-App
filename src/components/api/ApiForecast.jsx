@@ -1,49 +1,61 @@
-import  { useContext , useEffect} from 'react';
+import  { useContext , useEffect, useState} from 'react';
 import Context from '../Context';
 import FormSearch from '../outgoingSideBar/formSearch/FormSearch';
 
 const ApiForecast = () => {
+  const [forecast, setForecast] = useState({
+    temp: "1",
+    feels_like: "",
+    description: "Снег",
+    pressure: "742",
+    humidity: "84",
+    visibility: "6.2",
+    speedWind: "7",
+  });
   const value = useContext(Context);
   const UpperCaseFirstLetter = (str) =>
     str.charAt(0).toUpperCase() + str.slice(1);
-  const lat = value.location.lat;
-  const lon = value.location.lon;
+  let lat = value.location.lat;
+  let lon = value.location.lon;
 
-useEffect(() => {
-    if (lat && lon) {
-        getForecast();
-    };
-},[lat,lon]);
+  useEffect(() => {
+    if (Boolean(lat) && Boolean(lon)) {
+      getForecast();
+    }
+  }, [lat, lon]);
+
+  localStorage.setItem('dataForecast',JSON.stringify(forecast));
 
   const getForecast = () => {
     // console.log(process.env.REACT_APP_API_KEY_WEATHER);
-   
+
     fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY_WEATHER}&units=metric&lang=ru`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=34e4005e3785495e2bd9bf8211a0fda4&units=metric&lang=ru`
     )
       .then((response) => {
         if (response.ok) {
-          response.json();
-          
+          return response.json();
         }
       })
-      .then((data, main, weather, visibility, wind) => {
+      .then((data) => {
         console.log(data);
-        console.log(Math.round(main.temp));
-        console.log(Math.round(main.feels_like));
-        console.log(UpperCaseFirstLetter(weather[0].description));
-        console.log(weather[0].icon);
-        console.log(main.pressure);
-        console.log(main.humidity);
-        console.log(visibility / 1000);
-        console.log(Math.round(wind.speed));
-        console.log(Math.round(wind.deg));
+        setForecast({ temp: Math.round(data.main.temp) });
+        setForecast({ feels_like: Math.round(data.main.feels_like) });
+        setForecast({
+          description: UpperCaseFirstLetter(data.weather[0].description),
+        });
+        console.log(data.weather[0].icon);
+        setForecast({ pressure: data.main.pressure });
+        setForecast({ humidity: data.main.humidity });
+        setForecast({ visibility: data.visibility / 1000 });
+        setForecast({ speedWind: Math.round(data.wind.speed) });
+        console.log(Math.round(data.wind.deg));
       })
       .catch(() => {
         console.log("error, Kristina!");
       });
-  };
 
-  return <FormSearch  />;
-};
+    return <FormSearch />;
+  };
+}
 export default ApiForecast;

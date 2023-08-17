@@ -6,6 +6,9 @@
     width: 100px;
     height: 143px;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .card__back {
     height: 100px;
